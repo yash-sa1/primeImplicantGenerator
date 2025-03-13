@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f421647-2488-404e-a36c-49e5601584b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExceptionQuine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/utils/ExceptionQuine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetMintermList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/service/GetMintermList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/model/MinTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quine.java" beforeDir="false" afterPath="$PROJECT_DIR$/Quine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/qnmc/qnmc/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/qnmc/qnmc/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/ExceptionQuine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/GUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/GUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/GUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/GUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/GetMintermList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MenuBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/MinTerm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/Quine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/qnmc/qnmc/Quine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qnmc/presentation/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/presentation/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +44,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "yash-sa1"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/yash-sa1/primeImplicantGenerator.git",
@@ -41,7 +69,7 @@
   "keyToString": {
     "Application.GUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/yashs/qnmc",
     "settings.editor.selected.configurable": "preferences.fileTypes"

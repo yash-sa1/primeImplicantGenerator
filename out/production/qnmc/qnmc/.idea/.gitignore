@@ -1,3 +1,25 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# IDE config files (IntelliJ IDEA)
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# OS-specific
+.DS_Store
+Thumbs.db

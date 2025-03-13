@@ -1,4 +1,6 @@
-package qnmc;
+package qnmc.src.com.qnmc.model;
+
+import qnmc.src.com.qnmc.utils.ExceptionQuine;
 
 public class MinTerm {
 	// input data representation
@@ -53,7 +55,7 @@ public class MinTerm {
 
 	// comparing minterm
 
-	public boolean isSame(MinTerm a) throws ExceptionQuine {
+	public boolean equalsTo(MinTerm a) throws ExceptionQuine {
 		if (count != a.count)
 			throw new ExceptionQuine("MinTerm::isSame()");
 		for (int i = 0; i < count; i++) {
@@ -66,7 +68,7 @@ public class MinTerm {
 
 	// number of the difference
 
-	public int resolutionCount(MinTerm a) throws ExceptionQuine {
+	public int countingDifferencesBetweenMinterms(MinTerm a) throws ExceptionQuine {
 		if (count != a.count)
 			throw new ExceptionQuine("MinTerm::resolutionCount()");
 		int resCount = 0;
@@ -79,7 +81,7 @@ public class MinTerm {
 
 	// position of the first difference
 
-	public int resolutionPos(MinTerm a) throws ExceptionQuine {
+	public int getFirstDifferenceIndex(MinTerm a) throws ExceptionQuine {
 		if (count != a.count)
 			throw new ExceptionQuine("MinTerm::resoutionPos()");
 		for (int i = 0; i < count; i++) {
@@ -92,7 +94,7 @@ public class MinTerm {
 
 	// combining two minterms
 
-	public static MinTerm combine(MinTerm a, MinTerm b) throws ExceptionQuine {
+	public static MinTerm mergeMinterms(MinTerm a, MinTerm b) throws ExceptionQuine {
 		if (a.count != b.count)
 			throw new ExceptionQuine("MinTerm::combine()");
 		StringBuffer buf = new StringBuffer(a.count);

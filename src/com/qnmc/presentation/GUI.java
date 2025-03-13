@@ -1,8 +1,8 @@
 package qnmc.src.com.qnmc.presentation;
 
 
-import qnmc.ExceptionQuine;
-import qnmc.GetMintermList;
+import qnmc.src.com.qnmc.utils.ExceptionQuine;
+import qnmc.src.com.qnmc.service.GetMintermList;
 import qnmc.Quine;
 
 import java.awt.Font;

@@ -1,4 +1,4 @@
-package qnmc;
+package qnmc.src.com.qnmc.service;
 
 import java.util.Set;
 import java.util.TreeSet;

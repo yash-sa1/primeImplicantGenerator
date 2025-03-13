@@ -1,5 +1,8 @@
 package qnmc;
 
+import qnmc.src.com.qnmc.model.MinTerm;
+import qnmc.src.com.qnmc.utils.ExceptionQuine;
+
 public class Quine {
 	// macro
 	protected static final int MAX_TERMS = 0xff;// 0xff=255
@@ -26,7 +29,7 @@ public class Quine {
 	// see whether the element already exists
 	public boolean hasTerm(MinTerm a) throws ExceptionQuine {
 		for (int i = 0; i < count; i++) {
-			if (a.isSame(terms[i]))
+			if (a.equalsTo(terms[i]))
 				return true;
 		}
 		return false;
@@ -48,8 +51,8 @@ public class Quine {
 		for (int i = 0; i < count; i++) {
 			for (int j = i + 1; j < count; j++) {
 				// finding the terms which differs in one place
-				if (terms[i].resolutionCount(terms[j]) == 1) {
-					reducedTerms[reducedCount++] = MinTerm.combine(terms[i],
+				if (terms[i].countingDifferencesBetweenMinterms(terms[j]) == 1) {
+					reducedTerms[reducedCount++] = MinTerm.mergeMinterms(terms[i],
 							terms[j]);
 					used[i] = true;
 					used[j] = true;
