@@ -53,44 +53,6 @@ public class MinTerm {
 		return buf.toString();
 	}
 
-	// comparing minterm
-
-	public boolean equalsTo(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
-			throw new ExceptionQuine("MinTerm::isSame()");
-		for (int i = 0; i < count; i++) {
-			if (term[i] != a.term[i])
-				return false;
-
-		}
-		return true;
-	}
-
-	// number of the difference
-
-	public int countingDifferencesBetweenMinterms(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
-			throw new ExceptionQuine("MinTerm::resolutionCount()");
-		int resCount = 0;
-		for (int i = 0; i < count; i++) {
-			if (term[i] != a.term[i])
-				resCount++;
-		}
-		return resCount;
-	}
-
-	// position of the first difference
-
-	public int getFirstDifferenceIndex(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
-			throw new ExceptionQuine("MinTerm::resoutionPos()");
-		for (int i = 0; i < count; i++) {
-			if (term[i] != a.term[i])
-				return i;
-		}
-
-		return -1;
-	}
 
 	// combining two minterms
 
@@ -105,5 +67,13 @@ public class MinTerm {
 				buf.append(a.toString().charAt(i));
 		}
 		return new MinTerm(buf.toString());
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public int[] getTerm() {
+		return term;
 	}
 }

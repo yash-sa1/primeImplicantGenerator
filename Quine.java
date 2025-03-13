@@ -1,6 +1,7 @@
 package qnmc;
 
 import qnmc.src.com.qnmc.model.MinTerm;
+import qnmc.src.com.qnmc.service.MinTermService;
 import qnmc.src.com.qnmc.utils.ExceptionQuine;
 
 public class Quine {
@@ -29,7 +30,7 @@ public class Quine {
 	// see whether the element already exists
 	public boolean hasTerm(MinTerm a) throws ExceptionQuine {
 		for (int i = 0; i < count; i++) {
-			if (a.equalsTo(terms[i]))
+			if (MinTermService.equalsTo(a,terms[i]))
 				return true;
 		}
 		return false;
@@ -43,39 +44,34 @@ public class Quine {
 
 	// reduction of the minterm
 	private int reduce() throws ExceptionQuine {
-		// variable
 		int reducedCount = 0;
 		MinTerm[] reducedTerms = new MinTerm[MAX_TERMS];
 		boolean[] used = new boolean[MAX_TERMS];
-		// working with all minterms
+
 		for (int i = 0; i < count; i++) {
 			for (int j = i + 1; j < count; j++) {
-				// finding the terms which differs in one place
-				if (terms[i].countingDifferencesBetweenMinterms(terms[j]) == 1) {
-					reducedTerms[reducedCount++] = MinTerm.mergeMinterms(terms[i],
-							terms[j]);
+				if (MinTermService.countingDifferencesBetweenMinterms(terms[i], terms[j]) == 1) {
+					reducedTerms[reducedCount++] = MinTerm.mergeMinterms(terms[i], terms[j]);
 					used[i] = true;
 					used[j] = true;
 				}
 			}
 		}
-		// copy the unchanged minterm in new list
 
 		int totalReduced = reducedCount;
 		for (int i = 0; i < count; i++) {
-			if (used[i] == false) {
+			if (!used[i]) {
 				reducedTerms[totalReduced++] = terms[i];
 			}
 		}
-		// initialize
+
 		count = 0;
-		// storing in a list(except the double term)
 		for (int i = 0; i < totalReduced; i++) {
-			if (!hasTerm(reducedTerms[i]))
+			if (!hasTerm(reducedTerms[i])) {
 				terms[count++] = reducedTerms[i];
+			}
 		}
-		// number of reduction to produce
-		// System.out.println(reducedCount);
+
 		return reducedCount;
 	}
 }
