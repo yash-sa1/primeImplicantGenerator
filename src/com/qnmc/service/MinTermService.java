@@ -28,14 +28,4 @@ public class MinTermService {
         return resCount;
     }
 
-    // Finds the index of the first difference between two minterms
-    public int getFirstDifferenceIndex(MinTerm a, MinTerm b) throws ExceptionQuine {
-        if (a.getCount() != b.getCount())
-            throw new ExceptionQuine("MinTermService::getFirstDifferenceIndex() - Minterms have different counts");
-        for (int i = 0; i < a.getCount(); i++) {
-            if (a.getTerm()[i] != b.getTerm()[i])
-                return i;
-        }
-        return -1;
-    }
 }
