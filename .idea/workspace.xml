@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f421647-2488-404e-a36c-49e5601584b1" name="Changes" comment="optimising main and GUI more">
+    <list default="true" id="4f421647-2488-404e-a36c-49e5601584b1" name="Changes" comment="optimising GUI and MenuBar">
+      <change afterPath="$PROJECT_DIR$/src/test/DataProcessingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/GetMintermListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/MinTermServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/MinTermTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qnmc/presentation/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/presentation/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/qnmc/presentation/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/presentation/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quine.java" beforeDir="false" afterPath="$PROJECT_DIR$/Quine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/Quine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/qnmc/qnmc/Quine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qnmc/qnmc/qnmc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/qnmc/qnmc/qnmc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qnmc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qnmc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qnmc/model/MinTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/model/MinTerm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/qnmc/service/DataProcessingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/service/DataProcessingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/qnmc/service/MinTermService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/service/MinTermService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/qnmc/utils/ExceptionQuine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/qnmc/utils/ExceptionQuine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +59,23 @@
   "keyToString": {
     "Application.GUI.executor": "Run",
     "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.DataProcessingServiceTest.executor": "Run",
+    "JUnit.DataProcessingServiceTest.testProcessDataThreeWithInvalidInputNegativeNumber.executor": "Debug",
+    "JUnit.GetMintermListTest.executor": "Run",
+    "JUnit.GetMintermListTest.testGetMin_AddNullValue.executor": "Run",
+    "JUnit.GetMintermListTest.testGetMin_DuplicateElements.executor": "Run",
+    "JUnit.GetMintermListTest.testGetMin_EmptySet.executor": "Run",
+    "JUnit.GetMintermListTest.testGetMin_SingleElement.executor": "Run",
+    "JUnit.MinTermServiceTest.countingDifferencesBetweenMinterms_throwsExceptionForDifferentCount.executor": "Run",
+    "JUnit.MinTermServiceTest.executor": "Run",
+    "JUnit.MinTermTest.executor": "Run",
+    "JUnit.QuineMcCluskeyTest.executor": "Run",
+    "JUnit.QuineMcCluskeyTest.testSimplifyThreeBitMinterms.executor": "Run",
+    "JUnit.qnmc.src.test in qnmc.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -58,6 +83,93 @@
     "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.MinTermServiceTest">
+    <configuration name="DataProcessingServiceTest.testProcessDataThreeWithInvalidInputNegativeNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="qnmc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="qnmc.src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="qnmc.src.test" />
+      <option name="MAIN_CLASS_NAME" value="qnmc.src.test.DataProcessingServiceTest" />
+      <option name="METHOD_NAME" value="testProcessDataThreeWithInvalidInputNegativeNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinTermServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="qnmc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="qnmc.src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="qnmc.src.test" />
+      <option name="MAIN_CLASS_NAME" value="qnmc.src.test.MinTermServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinTermServiceTest.countingDifferencesBetweenMinterms_throwsExceptionForDifferentCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="qnmc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="qnmc.src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="qnmc.src.test" />
+      <option name="MAIN_CLASS_NAME" value="qnmc.src.test.MinTermServiceTest" />
+      <option name="METHOD_NAME" value="countingDifferencesBetweenMinterms_throwsExceptionForDifferentCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinTermTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="qnmc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="qnmc.src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="qnmc.src.test" />
+      <option name="MAIN_CLASS_NAME" value="qnmc.src.test.MinTermTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="qnmc.src.test in qnmc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="qnmc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="qnmc.src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="qnmc.src.test" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MinTermServiceTest" />
+        <item itemvalue="JUnit.MinTermServiceTest.countingDifferencesBetweenMinterms_throwsExceptionForDifferentCount" />
+        <item itemvalue="JUnit.qnmc.src.test in qnmc" />
+        <item itemvalue="JUnit.MinTermTest" />
+        <item itemvalue="JUnit.DataProcessingServiceTest.testProcessDataThreeWithInvalidInputNegativeNumber" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -99,13 +211,41 @@
       <option name="project" value="LOCAL" />
       <updated>1741915540988</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="optimising GUI and MenuBar">
+      <option name="closed" value="true" />
+      <created>1741950393371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741950393371</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changing methods names in MinTerm.java and adding layers" />
     <MESSAGE value="refactoring presentation layer to have more single responsibility" />
     <MESSAGE value="optimising main and GUI more" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimising main and GUI more" />
+    <MESSAGE value="optimising GUI and MenuBar" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimising GUI and MenuBar" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/GetMintermListTest.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/qnmc$MinTermServiceTest.ic" NAME="MinTermServiceTest Coverage Results" MODIFIED="1741961533152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>qnmc.src.test.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/qnmc$qnmc_src_test_in_qnmc.ic" NAME="qnmc.src.test in qnmc Coverage Results" MODIFIED="1741960575734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>qnmc.src.test.*</FILTER>
+    </SUITE>
   </component>
 </project>

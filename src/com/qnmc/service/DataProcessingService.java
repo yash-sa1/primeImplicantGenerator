@@ -5,8 +5,7 @@ import qnmc.src.com.qnmc.presentation.MenuBar;
 import javax.swing.*;
 import java.util.Set;
 
-public class DataProcessingService {
-
+public class DataProcessingService{
     private int k = 0;
     private Set<String> set;
 
@@ -26,13 +25,6 @@ public class DataProcessingService {
     public void setSet(Set<String> set) {
         this.set = set;
     }
-
-    public void clearSet() {
-        if (set != null) {
-            set.clear();
-        }
-    }
-
 
     public String processDataThree(String input) {
 

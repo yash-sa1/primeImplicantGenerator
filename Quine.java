@@ -14,7 +14,7 @@ public class Quine {
 	// adding minterms
 	public void addTerm(String str) throws ExceptionQuine {
 		if (count == MAX_TERMS)
-			throw new ExceptionQuine("Quine::addTerm()");
+			throw ExceptionQuine.getInstance("Quine::addTerm()");
 		terms[count++] = new MinTerm(str);
 	}
 
@@ -30,7 +30,7 @@ public class Quine {
 	// see whether the element already exists
 	public boolean hasTerm(MinTerm a) throws ExceptionQuine {
 		for (int i = 0; i < count; i++) {
-			if (MinTermService.equalsTo(a,terms[i]))
+			if (new MinTermService().equalsTo(a, terms[i]))
 				return true;
 		}
 		return false;
@@ -50,7 +50,7 @@ public class Quine {
 
 		for (int i = 0; i < count; i++) {
 			for (int j = i + 1; j < count; j++) {
-				if (MinTermService.countingDifferencesBetweenMinterms(terms[i], terms[j]) == 1) {
+				if (new MinTermService().countingDifferencesBetweenMinterms(terms[i], terms[j]) == 1) {
 					reducedTerms[reducedCount++] = MinTerm.mergeMinterms(terms[i], terms[j]);
 					used[i] = true;
 					used[j] = true;

@@ -58,7 +58,7 @@ public class MinTerm {
 
 	public static MinTerm mergeMinterms(MinTerm a, MinTerm b) throws ExceptionQuine {
 		if (a.count != b.count)
-			throw new ExceptionQuine("MinTerm::combine()");
+			throw ExceptionQuine.getInstance("MinTerm::combine()");
 		StringBuffer buf = new StringBuffer(a.count);
 		for (int i = 0; i < a.count; i++) {
 			if (a.term[i] != b.term[i])
