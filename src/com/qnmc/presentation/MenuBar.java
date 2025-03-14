@@ -1,5 +1,7 @@
 package qnmc.src.com.qnmc.presentation;
 
+import qnmc.src.com.qnmc.service.DataProcessingService;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -27,6 +29,8 @@ public class MenuBar extends JMenuBar {
 		fileMenu.setMnemonic(KeyEvent.VK_F);
 		add(fileMenu);
 
+		final DataProcessingService dataProcessingService = new DataProcessingService();
+
 		JMenuItem newMenuItem = new JMenuItem("New  Ctrl+N", KeyEvent.VK_N);
 		fileMenu.add(newMenuItem);
 		newMenuItem.addActionListener(new ActionListener() {
@@ -34,7 +38,9 @@ public class MenuBar extends JMenuBar {
 
 			public void actionPerformed(ActionEvent arg0) {
 
-				if(GUI.set!=null)GUI.set.clear();
+				if (dataProcessingService.getSet() != null) {
+					dataProcessingService.clearSet();
+				}
 				
 				String s = JOptionPane
 						.showInputDialog("Enter the boolean bits(3 to 5): ");

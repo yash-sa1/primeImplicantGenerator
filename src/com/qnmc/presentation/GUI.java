@@ -1,6 +1,7 @@
 package qnmc.src.com.qnmc.presentation;
 
 
+import qnmc.src.com.qnmc.service.DataProcessingService;
 import qnmc.src.com.qnmc.utils.ExceptionQuine;
 import qnmc.src.com.qnmc.service.GetMintermList;
 import qnmc.Quine;
@@ -11,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Iterator;
-import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,8 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 
 public class GUI extends JFrame {
 	
@@ -37,49 +35,23 @@ public class GUI extends JFrame {
 	@SuppressWarnings("unused")
 	private int i = 0;
 
-	
-	static public int k=0;
-	static public Set<String> set;
+
+
 	public String temp; 
 	GetMintermList item = new GetMintermList();
 
-	static public String dataThree(String input) {
+	private final DataProcessingService dataProcessingService = new DataProcessingService();
 
-		
-		String bin[] = { "000", "001", "010", "011", "100", "101", "110", "111" };
-
-		int i = Integer.parseInt(input);
-
-	
-
-		return bin[i];
-
+	public String dataThree(String input) {
+		return dataProcessingService.processDataThree(input);
 	}
 
-	static public String dataFour(String input) {
-
-		String bin[] = { "0000", "0001", "0010", "0011", "0100", "0101",
-				"0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101",
-				"1110", "1111" };
-
-		int i = Integer.parseInt(input);
-
-		return bin[i];
-
+	public String dataFour(String input) {
+		return dataProcessingService.processDataFour(input);
 	}
 
-	static public String dataFive(String input) {
-
-		String bin[] = { "00000", "00001", "00010", "00011", "00100", "00101",
-				"00110", "00111", "01000", "01001", "01010", "01011", "01100",
-				"01101", "01110", "01111", "10000", "10001", "10010", "10011",
-				"10100", "10101", "10110", "10111", "11000", "11001", "11010",
-				"11011", "11100", "11101", "11110", "11111" };
-
-		int i = Integer.parseInt(input);
-
-		return bin[i];
-
+	public String dataFive(String input) {
+		return dataProcessingService.processDataFive(input);
 	}
 
 	public GUI() {
@@ -127,53 +99,56 @@ public class GUI extends JFrame {
 				System.out.println(minIn.getText());
 				String tmp = minIn.getText();
 
-				
 				if (st == 3) {
-					
+
 					try {
-						k = Integer.parseInt(tmp);
+						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
 					} catch (NumberFormatException e) {
-						k = -1;
+						dataProcessingService.setK(-1); // Set via service if the input is invalid
 					}
 
-					if (k < 0 || k > 7) {
-						JOptionPane.showMessageDialog(null, "Number should be within 0 to 7\nPlease press Next and give your input again",
+					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 7) { // Use the service getter
+						JOptionPane.showMessageDialog(null,
+								"Number should be within 0 to 7\nPlease press Next and give your input again",
 								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else
+					} else {
 						temp = minIn.getText();
+					}
 				}
+
 				if (st == 4) {
-					
+
 					try {
-						k = Integer.parseInt(tmp);
+						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
 					} catch (NumberFormatException e) {
-						k = -1;
+						dataProcessingService.setK(-1); // Set via service if the input is invalid
 					}
 
-					if (k < 0 || k > 15) {
-						JOptionPane.showMessageDialog(null, "Number should be within 0 to 15\nPlease press Next and give your input again",
+					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 15) { // Use the service getter
+						JOptionPane.showMessageDialog(null,
+								"Number should be within 0 to 15\nPlease press Next and give your input again",
 								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else
+					} else {
 						temp = minIn.getText();
-
+					}
 				}
 
 				if (st == 5) {
-					
+
 					try {
-						k = Integer.parseInt(tmp);
+						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
 					} catch (NumberFormatException e) {
-						k = -1;
+						dataProcessingService.setK(-1); // Set via service if the input is invalid
 					}
 
-					if (k < 0 || k > 31) {
-						JOptionPane.showMessageDialog(null, "Number should be within 0 to 31\nPlease press Next and give your input again",
+					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 31) { // Use the service getter
+						JOptionPane.showMessageDialog(null,
+								"Number should be within 0 to 31\nPlease press Next and give your input again",
 								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else
+					} else {
 						temp = minIn.getText();
-
+					}
 				}
-
 			}
 
 			@Override
@@ -213,16 +188,13 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				Quine quine = new Quine();
-
-				
-				set = GetMintermList.getMin();
+				dataProcessingService.setSet(GetMintermList.getMin()); // Set 'set' using the service
 				@SuppressWarnings("unused")
-				int len = set.size();
+				int len = dataProcessingService.getSet().size(); // Access 'set' using the service's getter
 				try {
-					Iterator<String> it = set.iterator();
+					Iterator<String> it = dataProcessingService.getSet().iterator(); // Work with 'set' via service
 
-					while (it.hasNext() == true) {
-
+					while (it.hasNext()) {
 						String str = it.next();
 
 						if (MenuBar.bits == 3)
@@ -252,47 +224,5 @@ public class GUI extends JFrame {
 		setVisible(true); 
 		add(panel);
 
-	}
-
-	public static void main(String[] args) {
-		
-		
-		
-		try {
-			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-		
-		
-		
-		String s = JOptionPane
-				.showInputDialog("Enter the boolean bits(3 to 5): ");
-		try {
-			MenuBar.bits= Integer.parseInt(s);
-		} catch (NumberFormatException e) {
-
-			MenuBar.bits= 2;
-		}
-
-		if (MenuBar.bits< 3 || MenuBar.bits> 5) {
-			JOptionPane.showMessageDialog(null,
-					"Wrong input. Press File and then NEW", "Error",
-					JOptionPane.ERROR_MESSAGE, null);
-
-		}
-
-		
-		GUI gui = new GUI();
-		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-
-	
 	}
 }
