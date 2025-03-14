@@ -37,9 +37,7 @@ public class Main {
             JOptionPane.showMessageDialog(null,
                     "Wrong input. Press File and then NEW", "Error",
                     JOptionPane.ERROR_MESSAGE, null);
-
         }
-
 
         GUI gui = new GUI();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

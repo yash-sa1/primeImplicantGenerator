@@ -1,228 +1,166 @@
 package qnmc.src.com.qnmc.presentation;
 
-
 import qnmc.src.com.qnmc.service.DataProcessingService;
 import qnmc.src.com.qnmc.utils.ExceptionQuine;
 import qnmc.src.com.qnmc.service.GetMintermList;
 import qnmc.Quine;
 
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Iterator;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 public class GUI extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
+
+	// GUI Components
 	private JPanel panel;
-	
-	private JLabel minInput;
-	private JTextField minIn;
-	private JButton nextBt;
-	
-	private JTextArea resultShow;
-	private JButton calBt;
-	@SuppressWarnings("unused")
-	private int i = 0;
+	private JLabel minInputLabel;
+	private JTextField minInputField;
+	private JButton nextButton;
+	private JTextArea resultTextArea;
+	private JButton calculateButton;
 
-
-
-	public String temp; 
-	GetMintermList item = new GetMintermList();
-
+	// Data dependencies
 	private final DataProcessingService dataProcessingService = new DataProcessingService();
+	private final GetMintermList getMintermList = new GetMintermList();
+	private String tempInput; // Temporarily stores validated user input
 
-	public String dataThree(String input) {
-		return dataProcessingService.processDataThree(input);
-	}
-
-	public String dataFour(String input) {
-		return dataProcessingService.processDataFour(input);
-	}
-
-	public String dataFive(String input) {
-		return dataProcessingService.processDataFive(input);
-	}
+	@SuppressWarnings("unused")
+	private int i = 0; // Unused placeholder for future use
 
 	public GUI() {
-		
-
 		super("Quine McCluskey Prime Implicant Generator");
+		initializeFrame(); // Sets up JFrame and panel properties
+		initializeMenuBar(); // Adds the menu bar to the frame
+		initializeComponents(); // Creates GUI components
+		addComponentsToPanel(); // Adds components to the main panel
+		setVisible(true); // Makes the GUI visible
+	}
 
-		setLayout(null); 
+	private void initializeFrame() {
+		setSize(550, 500); // Sets the frame dimensions
+		setResizable(false); // Disables resizing for fixed layout
+		setLayout(null); // Uses absolute positioning
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensures the program exits on close
 
-		setSize(550, 500); 
-		setResizable(false);
-		panel = new JPanel(); 
-		panel.setBounds(0, 0, 500, 500); 
+		panel = new JPanel();
+		panel.setBounds(0, 0, 500, 500);
+		panel.setLayout(null);
+		add(panel); // Adds the main panel to the JFrame
+	}
 
-		panel.setLayout(null); 
+	private void initializeMenuBar() {
+		MenuBar menuBar = new MenuBar(); // Custom MenuBar logic exists elsewhere
+		setJMenuBar(menuBar); // Attaches the JMenuBar to the frame
+	}
 
-		MenuBar bar = new MenuBar();
-		setJMenuBar(bar);
+	private void initializeComponents() {
+		// Label for the input field
+		minInputLabel = new JLabel("Enter Minterm list: ");
+		minInputLabel.setBounds(50, 100, 150, 30);
+		minInputLabel.setFont(new Font("Verdana", Font.BOLD, 14));
 
-		
+		// Input field for user-entered minterm list
+		minInputField = new JTextField();
+		minInputField.setBounds(50, 140, 70, 30);
+		minInputField.addKeyListener(createInputValidationListener()); // KeyListener validates input dynamically
 
-		minInput = new JLabel("Enter Minterm list: ");
-		minInput.setBounds(50, 100, 150, 30);
-		minInput.setFont(new Font("Verdana", Font.BOLD, 14));
-		panel.add(minInput);
+		// "Next" button to reset input and store the current value
+		nextButton = new JButton("Next");
+		nextButton.setBounds(140, 140, 70, 30);
+		nextButton.addActionListener(e -> handleNextAction()); // Handles the "Next" button action
 
-		minIn = new JTextField();
-		minIn.setBounds(50, 140, 70, 30);
+		// Text area to display operation results
+		resultTextArea = new JTextArea();
+		resultTextArea.setBounds(50, 200, 300, 200);
+		resultTextArea.setEditable(false); // Prevents user edits to results
 
-		minIn.addKeyListener(new KeyListener() {
+		// "Calculate" button to process minterm and compute results
+		calculateButton = new JButton("Calculate");
+		calculateButton.setBounds(400, 250, 100, 50);
+		calculateButton.addActionListener(e -> handleCalculateAction()); // Handles the calculation action
+	}
+
+	private void addComponentsToPanel() {
+		panel.add(minInputLabel); // Adds label to the panel
+		panel.add(minInputField); // Adds input field to the panel
+		panel.add(nextButton); // Adds "Next" button to the panel
+		panel.add(resultTextArea); // Adds the result display to the panel
+		panel.add(calculateButton); // Adds "Calculate" button to the panel
+	}
+
+	private KeyListener createInputValidationListener() {
+		// Validates input dynamically and ensures it's within range
+		return new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				validateInput(minInputField.getText()); // Validate input on key release
+			}
 
 			@Override
-			public void keyTyped(KeyEvent arg0) {
+			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
-			public void keyReleased(KeyEvent arg0) {
-
-				@SuppressWarnings("unused")
-				int flag = 0;
-				int st = MenuBar.bits;
-
-				System.out.println(minIn.getText());
-				String tmp = minIn.getText();
-
-				if (st == 3) {
-
-					try {
-						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
-					} catch (NumberFormatException e) {
-						dataProcessingService.setK(-1); // Set via service if the input is invalid
-					}
-
-					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 7) { // Use the service getter
-						JOptionPane.showMessageDialog(null,
-								"Number should be within 0 to 7\nPlease press Next and give your input again",
-								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else {
-						temp = minIn.getText();
-					}
-				}
-
-				if (st == 4) {
-
-					try {
-						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
-					} catch (NumberFormatException e) {
-						dataProcessingService.setK(-1); // Set via service if the input is invalid
-					}
-
-					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 15) { // Use the service getter
-						JOptionPane.showMessageDialog(null,
-								"Number should be within 0 to 15\nPlease press Next and give your input again",
-								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else {
-						temp = minIn.getText();
-					}
-				}
-
-				if (st == 5) {
-
-					try {
-						dataProcessingService.setK(Integer.parseInt(tmp)); // Use the service setter
-					} catch (NumberFormatException e) {
-						dataProcessingService.setK(-1); // Set via service if the input is invalid
-					}
-
-					if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > 31) { // Use the service getter
-						JOptionPane.showMessageDialog(null,
-								"Number should be within 0 to 31\nPlease press Next and give your input again",
-								"Error", JOptionPane.ERROR_MESSAGE, null);
-					} else {
-						temp = minIn.getText();
-					}
-				}
-			}
-
-			@Override
-			public void keyPressed(KeyEvent arg0) {
+			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-
 			}
-		});
-		panel.add(minIn);
+		};
+	}
 
-		nextBt = new JButton("Next");
-		nextBt.setBounds(140, 140, 70, 30);
-		nextBt.addActionListener(new ActionListener() {
+	private void validateInput(String input) {
+		int menuBarBits = MenuBar.bits; // Retrieve input size setting from MenuBar
+		int upperBound = (int) Math.pow(2, menuBarBits) - 1; // Calculate valid input range based on `bits`
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		try {
+			dataProcessingService.setK(Integer.parseInt(input)); // Attempt to parse user input
+		} catch (NumberFormatException e) {
+			dataProcessingService.setK(-1); // Assign error flag for invalid inputs
+		}
 
-				minIn.setText("");
-				item.setMinList(temp);
+		// Check if the parsed input is out of bounds
+		if (dataProcessingService.getK() < 0 || dataProcessingService.getK() > upperBound) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Number should be within 0 to " + upperBound + "\nPlease press Next and give your input again",
+					"Error",
+					JOptionPane.ERROR_MESSAGE
+			);
+		} else {
+			tempInput = input; // Update valid input
+		}
+	}
 
-				
-			}
-		});
-		panel.add(nextBt);
+	private void handleNextAction() {
+		minInputField.setText(""); // Clear the text field for the next input
+		getMintermList.setMinList(tempInput); // Update minterm list with validated input
+	}
 
-		
-		resultShow = new JTextArea();
-		resultShow.setBounds(50, 200, 300, 200);
-		resultShow.setEditable(false);
-		panel.add(resultShow);
+	private void handleCalculateAction() {
+		Quine quine = new Quine(); // Initialize Quine object for processing
+		dataProcessingService.setSet(GetMintermList.getMin()); // Syncs data set with minterms list
 
-		calBt = new JButton("Calculate");
-		calBt.setBounds(400, 250, 100, 50);
-		calBt.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				Quine quine = new Quine();
-				dataProcessingService.setSet(GetMintermList.getMin()); // Set 'set' using the service
-				@SuppressWarnings("unused")
-				int len = dataProcessingService.getSet().size(); // Access 'set' using the service's getter
-				try {
-					Iterator<String> it = dataProcessingService.getSet().iterator(); // Work with 'set' via service
-
-					while (it.hasNext()) {
-						String str = it.next();
-
-						if (MenuBar.bits == 3)
-							quine.addTerm(dataThree(str));
-						else if (MenuBar.bits == 4)
-							quine.addTerm(dataFour(str));
-						else if (MenuBar.bits == 5)
-							quine.addTerm(dataFive(str));
-
-						System.out.println(str);
-					}
-
-					
-					quine.simplify();
-					String temp1 = quine.toString();
-					
-					resultShow.setText(temp1);
-				} catch (ExceptionQuine e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		try {
+			// Loop through minterms and process each one
+			Iterator<String> iterator = dataProcessingService.getSet().iterator();
+			while (iterator.hasNext()) {
+				String term = iterator.next();
+				if (MenuBar.bits == 3) {
+					quine.addTerm(dataProcessingService.processDataThree(term));
+				} else if (MenuBar.bits == 4) {
+					quine.addTerm(dataProcessingService.processDataFour(term));
+				} else if (MenuBar.bits == 5) {
+					quine.addTerm(dataProcessingService.processDataFive(term));
 				}
-
 			}
-		});
-		panel.add(calBt);
 
-		setVisible(true); 
-		add(panel);
-
+			quine.simplify(); // Simplify minterms using quine logic
+			resultTextArea.setText(quine.toString()); // Display calculated result in UI
+		} catch (ExceptionQuine e) {
+			e.printStackTrace(); // TODO: Handle ExceptionQuine appropriately
+		}
 	}
 }
